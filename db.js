@@ -1,15 +1,15 @@
 require('dotenv').config(); 
-const Pool = require('pq').Pool; /* (подключаем класс для работы с БД) */
+const Pool = require('pg').Pool; /* (подключаем класс для работы с БД) */
 
-const PASSWORD = PASSWORD_POSTGRE;
+const PASSWORD = process.env.PASSWORD_POSTGRE;
 
-/* (передаем обьект с настройками, имя и порт были при создании по умолчанию) */
+/* (передаем обьект с настройками, имя и порт были при создании по умолчанию, в database - имя созданной БД) */
 const pool = new Pool({
     user: "postgres",
     password: PASSWORD,
     host: "localhost",
     port: 5432,
-    database: ""
+    database: "node_postgres"
 })
 
-module.exports = pool;
+module.exports = pool; /* (подключение понадобится в документах папки controller) */
